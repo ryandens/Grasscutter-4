@@ -112,7 +112,9 @@ public final class GiveCommand implements CommandHandler {
             item.setTotalExp(totalExp);
             int numAffixes = param.data.getAppendPropNum() + (param.lvl - 1) / 4;
             if (param.mainPropId > 0) // Keep random mainProp if we didn't specify one
-            item.setMainPropId(param.mainPropId);
+            {
+                item.setMainPropId(param.mainPropId);
+            }
             if (param.appendPropIdList != null) {
                 item.getAppendPropIdList().clear();
                 item.getAppendPropIdList().addAll(param.appendPropIdList);
