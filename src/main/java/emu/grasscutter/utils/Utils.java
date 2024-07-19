@@ -8,6 +8,7 @@ import emu.grasscutter.config.ConfigContainer;
 import emu.grasscutter.data.DataLoader;
 import emu.grasscutter.game.world.Position;
 import emu.grasscutter.utils.objects.Returnable;
+import io.github.pixee.security.BoundedLineReader;
 import io.javalin.http.Context;
 import io.netty.buffer.*;
 import it.unimi.dsi.fastutil.ints.*;
@@ -289,7 +290,7 @@ public final class Utils {
         try (BufferedReader reader =
                 new BufferedReader(new InputStreamReader(stream, StandardCharsets.UTF_8))) {
             String line;
-            while ((line = reader.readLine()) != null) {
+            while ((line = BoundedLineReader.readLine(reader, 5_000_000)) != null) {
                 stringBuilder.append(line);
             }
             stream.close();
