@@ -41,7 +41,9 @@ public class CookingCompoundManager extends BasePlayerManager {
         // fish.Besides,it should be bound to player rather than manager.
         unlocked = new HashSet<>(defaultUnlockedCompounds);
         if (compoundGroups.containsKey(3)) // Avoid NPE from Resources error
-        unlocked.addAll(compoundGroups.get(3));
+        {
+            unlocked.addAll(compoundGroups.get(3));
+        }
     }
 
     private synchronized List<CompoundQueueData> getCompoundQueueData() {
